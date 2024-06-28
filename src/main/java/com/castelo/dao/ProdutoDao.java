@@ -1,6 +1,7 @@
 package com.castelo.dao;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.castelo.conexao.Conexao;
@@ -42,6 +43,7 @@ public class ProdutoDao {
         Conexao conexao = new Conexao();
 
         String sql = "DELETE FROM produto WHERE id = ?";
+        
 
         PreparedStatement ps = null;
 
@@ -65,5 +67,43 @@ public class ProdutoDao {
            
         
     }  
+
+
+
+    public void consultarProduto(ProdutoPojo produtoPojo) {
+
+        Conexao conexao = new Conexao();
+
+        String sql = "SELECT * FROM produto WHERE id = ?";
+                     
+        PreparedStatement ps = null;
+
+        ResultSet rs = null;
+        
+        try {
+        
+            rs = ps.executeQuery(sql);
+
+            while (rs.next()) {
+            ps.setString(1, produtoPojo.getNome());
+            ps.setDouble(2, produtoPojo.getValor());
+            ps.setInt(3, produtoPojo.getId());
+            }
+      
+
+            ps.setInt(1, produtoPojo.getId());
+
+            ps.execute();
+            ps.close();
+
+            System.out.println("dados consultados");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+           
+        
+    }  
+
 
 }

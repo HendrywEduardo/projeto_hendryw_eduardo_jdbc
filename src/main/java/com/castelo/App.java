@@ -12,8 +12,8 @@ public class App{
 
     public static void main( String[] args )
     {
-        
-       /* Produto produto = new Produto();
+       /* 
+        Produto produto = new Produto();
 
         produto.setNome("pera argentina");;
         produto.setValor(35.00);
@@ -30,7 +30,7 @@ public class App{
 
         ProdutoDao produtoDao = new ProdutoDao();
         produtoDao.cadastrarProduto(produtoPojo);
-        */
+        */ /* 
         
         
         Produto produto = new Produto();
@@ -48,8 +48,20 @@ public class App{
 
         ProdutoDao produtoDao = new ProdutoDao();
         produtoDao.deletarProduto(produtoPojo);
+        */
+
+        Produto produto = new Produto();
+
+        produto.setId(2);
+
+
+        ProdutoPojo produtoPojo = new ProdutoPojo();
+        produtoPojo.setId(produto.getId());
         
-         
+
+
+        ProdutoDao produtoDao = new ProdutoDao();
+        produtoDao.consultarProduto(produtoPojo);
          
 
 
